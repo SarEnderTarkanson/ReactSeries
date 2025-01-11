@@ -7,8 +7,12 @@ import PostPage from "./PostPage";
 import About from "./About";
 import Missing from "./Missing";
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+const [search, setSearch] = useState('')
+
+
   return (
     <div className="App">
       <Header title="React JS Blog"/>
