@@ -6,11 +6,11 @@ import NewPost from "./NewPost";
 import PostPage from "./PostPage";
 import About from "./About";
 import Missing from "./Missing";
+import EditPost from "./EditPost";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import api from "./api/posts";
-import EditPost from "./EditPost";
 
 function App() {
   const [posts, setPosts] = useState([]);
