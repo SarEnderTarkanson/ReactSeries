@@ -95,11 +95,7 @@ function App() {
           <Route
             path="/"
             element={
-              <Home
-                posts={searchResults}
-                fetchError={fetchError}
-                isLoading={isLoading}
-              />
+              <Home />
             }
           />
           <Route
