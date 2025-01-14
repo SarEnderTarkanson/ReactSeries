@@ -48,17 +48,6 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await api.delete(`/posts/${id}`);
-      const postsList = posts.filter((post) => post.id !== id);
-      setPosts(postsList);
-      navigate("/");
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
-  };
-
   return (
     <DataContext.Provider
       value={{
@@ -73,7 +62,6 @@ export const DataProvider = ({ children }) => {
         editTitle,
         setEditTitle,
         posts,
-        handleDelete,
         setPosts,
       }}
     >
