@@ -50,7 +50,7 @@ export const DataProvider = ({ children }) => {
       console.log(`Error: ${err.message}`);
     }
   };
-  
+
   const handleEdit = async (id) => {
     const datetime = format(new Date(), "MMMM dd, yyyy pp");
     const updatedPost = { id, title: editTitle, datetime, body: editBody };
@@ -66,7 +66,7 @@ export const DataProvider = ({ children }) => {
       console.log(`Error: ${err.message}`);
     }
   };
-  
+
   const handleDelete = async (id) => {
     try {
       await api.delete(`/posts/${id}`);
@@ -78,23 +78,31 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  return <DataContext.Provider value={{
-    width,
-    search,
-    setSearch,
-    searchResults,
-    fetchError,
-    isLoading,
-    handleSubmit,
-    postTitle,
-    setPostTitle,
-    postBody,
-    setPostBody
-    }}>
-        {children}
-    </DataContext.Provider>;
+  return (
+    <DataContext.Provider
+      value={{
+        width,
+        search,
+        setSearch,
+        searchResults,
+        fetchError,
+        isLoading,
+        handleSubmit,
+        postTitle,
+        setPostTitle,
+        postBody,
+        setPostBody,
+        posts,
+        handleEdit,
+        editBody,
+        setEditBody,
+        editTitle,
+        setEditTitle,
+      }}
+    >
+      {children}
+    </DataContext.Provider>
+  );
 };
-
-
 
 export default DataContext;
