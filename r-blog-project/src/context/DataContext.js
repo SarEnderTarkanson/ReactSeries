@@ -80,7 +80,8 @@ export const DataProvider = ({ children }) => {
 
   return <DataContext.Provider value={{
     width,
-    
+    search,
+    setSearch
     }}>
         {children}
     </DataContext.Provider>;
