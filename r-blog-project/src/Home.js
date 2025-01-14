@@ -3,7 +3,7 @@ import { useContext } from "react";
 import DataContext from "./context/DataContext";
 
 const Home = () => {
-  const { posts, fetchError, isLoading } = useContext(DataContext);
+  const { searchResults, fetchError, isLoading } = useContext(DataContext);
 
   return (
     <main className="Home">
@@ -15,8 +15,8 @@ const Home = () => {
       )}
       {!isLoading &&
         !fetchError &&
-        (posts.length ? (
-          <Feed posts={posts} />
+        (searchResults.length ? (
+          <Feed posts={searchResults} />
         ) : (
           <p className="statusMsg">No posts to display.</p>
         ))}

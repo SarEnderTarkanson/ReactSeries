@@ -101,13 +101,7 @@ function App() {
           <Route
             path="/post"
             element={
-              <NewPost
-                handleSubmit={handleSubmit}
-                postTitle={postTitle}
-                setPostTitle={setPostTitle}
-                postBody={postBody}
-                setPostBody={setPostBody}
-              />
+              <NewPost />
             }
           />
           <Route
