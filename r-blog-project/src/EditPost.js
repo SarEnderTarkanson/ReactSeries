@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import DataContext from "./context/DataContext";
-import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import api from "./api/posts";
 
