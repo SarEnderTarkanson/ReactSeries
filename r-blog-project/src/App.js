@@ -97,7 +97,7 @@ function App() {
           <Route path="/edit/:id" element={<EditPost />} />
           <Route
             path="/post/:id"
-            element={<PostPage posts={posts} handleDelete={handleDelete} />}
+            element={<PostPage />}
           />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Missing />} />
