@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import api from "../api/posts";
 import useAxiosFetch from "../hooks/useAxiosFetch";
+import { useNavigate } from "react-router-dom";
 
 const DataContext = createContext({});
 
@@ -10,14 +10,14 @@ export const DataProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [postTitle, setPostTitle] = useState("");
-  const [postBody, setPostBody] = useState("");
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
-  const navigate = useNavigate();
+
   const { data, fetchError, isLoading } = useAxiosFetch(
     "http://localhost:3500/posts"
   );
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setPosts(data);
@@ -31,23 +31,6 @@ export const DataProvider = ({ children }) => {
     );
     setSearchResults(filteredResults.reverse());
   }, [posts, search]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const datetime = format(new Date(), "MMMM dd, yyyy pp");
-    const newPost = { id, title: postTitle, datetime, body: postBody };
-    try {
-      const response = await api.post("/posts", newPost);
-      const allPosts = [...posts, response.data];
-      setPosts(allPosts);
-      setPostTitle("");
-      setPostBody("");
-      navigate("/");
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
-  };
 
   const handleEdit = async (id) => {
     const datetime = format(new Date(), "MMMM dd, yyyy pp");
@@ -84,11 +67,6 @@ export const DataProvider = ({ children }) => {
         searchResults,
         fetchError,
         isLoading,
-        handleSubmit,
-        postTitle,
-        setPostTitle,
-        postBody,
-        setPostBody,
         handleEdit,
         editBody,
         setEditBody,
@@ -96,7 +74,7 @@ export const DataProvider = ({ children }) => {
         setEditTitle,
         posts,
         handleDelete,
-        setPosts
+        setPosts,
       }}
     >
       {children}
