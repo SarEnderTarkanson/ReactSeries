@@ -3,7 +3,7 @@ import api from "./api/posts";
 
 export default createStore({
   posts: [],
-  setPosts: action((action, payload) => {
+  setPosts: action((state, payload) => {
     state.posts = payload;
   }),
   postTitle: "",
@@ -49,7 +49,7 @@ export default createStore({
     const { posts } = helpers.getState();
     try {
       await api.delete(`/posts/${id}`);
-      setPosts(posts.filter((post) => post.id !== id));
+      actions.setPosts(posts.filter((post) => post.id !== id));
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
